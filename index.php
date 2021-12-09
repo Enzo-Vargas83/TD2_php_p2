@@ -1,6 +1,6 @@
 <form action="test-pass.php" method="post">
     <label>
-        Login :eazezaezaezae
+        Login :
         <input type="text" name="login"/>
     </label>
     <label>
