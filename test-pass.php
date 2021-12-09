@@ -7,7 +7,7 @@ if (!empty($_POST)) {
         $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2', 'vargas', 'lolo83520');
 
         $reponse = $dbh->query("SELECT COUNT(pseudo) FROM ident WHERE pseudo=".$pseudo);
-        while($donnees=$reponse->fetchAll())
+        if($donnees=$reponse->fetch())
         {
             if ($donnees['pseudo']==1)
             {
