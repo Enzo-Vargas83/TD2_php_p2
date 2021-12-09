@@ -4,13 +4,14 @@ if (!empty($_POST)) {
     $mdp = $_POST['password'];
     $dbLink = mysqli_connect('mysql-vargas.alwaysdata.net', 'vargas', 'lolo83520', 'vargas_td2');
 
-    $select = mysqli_query($dbLink, "SELECT Login FROM User_test WHERE Login = '". $_POST['login'] ."'");
+    $select = $dbLink->prepare("SELECT Login FROM User_test WHERE Login = '" . $_POST['login'] . "'");
     var_dump($select);
+    $select->execute(array($_POST['login']));
+    $number = $select->fetch();
 
-    if($select->num_rows == 0) {
+    if ($number['login'] == 1) {
         header("location : page_erreur.php");
-    }
-    else {
+    } else {
         header("location : page_bienvenue.php");
     }
 }
