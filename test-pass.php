@@ -6,10 +6,10 @@ if (!empty($_POST)) {
 
     $select = $dbLink->prepare("SELECT Login FROM User_test WHERE Login = '" . $_POST['login'] . "'");
     var_dump($select);
-    $select->execute(array($_POST['login']));
+    $select->execute(array($_POST['numero']));
     $number = $select->fetch();
 
-    if ($number['login'] == 1) {
+    if ($number['numerp'] == 1) {
         header("location : page_erreur.php");
     } else {
         header("location : page_bienvenue.php");
