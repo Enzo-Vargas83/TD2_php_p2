@@ -6,5 +6,7 @@ if (!empty($_POST)) {
 
     $select = mysqli_query($dbLink, "SELECT COUNT(Login) FROM User_test WHERE Login = '" . $_POST['login'] . "'");
     var_dump($select);
+    $nb = mysqli_field_count($select);
+    echo $nb;
     }
 ?>
