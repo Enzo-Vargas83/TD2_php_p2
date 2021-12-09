@@ -8,9 +8,11 @@ if (!empty($_POST)) {
     $nombre = mysqli_fetch_array($select);
     if ($nombre[0] >= 1){
         header("Location : page_erreur.php");
+        exit();
     }
     else {
         header("Location : page_bienvenue.php");
+        exit();
     }
     }
 ?>
