@@ -1,17 +1,32 @@
 <?php
 if (!empty($_POST)) {
-    $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2', 'vargas', 'lolo83520');
-    $stmt = $dbh->prepare("SELECT *  FROM User_test WHERE Login = ?");
-    $stmt->execute([
-        $_POST['login']
-    ]);
-    $result = $stmt->fetchAll();
-    var_dump($result);
-    if ($result) {
-        echo "le login existe";
+    $pseudo=$_POST['login'];
+    try
+    {
+        $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+        $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2', 'vargas', 'lolo83520');
+
+        $reponse=$dbh->query('SELECT COUNT(pseudo) FROM ident WHERE pseudo='.$pseudo);
+        while($donnees=$reponse->fetch())
+        {
+            if ($donnees['pseudo']==1)
+            {
+                echo 'bienvenue';
+            }
+
+            else
+            {
+                echo 'informations non correctes';
+                header('refresh:2;url=connexion.php');
+            }
+        }
+
     }
-    else {
-        echo "bienvenue nouveau utilisateur";
+
+
+    catch(Exception $e)
+    {
+        die('Erreur : '.$e->getMessage());
     }
 }
 ?>
