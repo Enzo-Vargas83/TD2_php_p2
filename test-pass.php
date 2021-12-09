@@ -6,8 +6,8 @@ if (!empty($_POST)) {
         $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
         $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2', 'vargas', 'lolo83520');
 
-        $reponse=$dbh->query('SELECT COUNT(pseudo) FROM ident WHERE pseudo='.$pseudo);
-        while($donnees=$reponse->fetch())
+        $reponse = $dbh->query("SELECT COUNT(pseudo) FROM ident WHERE pseudo=".$pseudo);
+        while($donnees=$reponse->fetchAll())
         {
             if ($donnees['pseudo']==1)
             {
