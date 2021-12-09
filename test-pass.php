@@ -5,7 +5,7 @@ if (!empty($_POST)) {
     $stmt->execute([
         $_POST['login']
     ]);
-    $result = $stmt->fetch();
+    $result = $stmt->fetchAll();
     if ($result) {
         echo "le login existe";
     }
