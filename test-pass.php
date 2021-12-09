@@ -10,9 +10,5 @@ if (!empty($_POST)) {
         header("Location : page_erreur.php");
         exit();
     }
-    else {
-        header("Location : page_bienvenue.php");
-        exit();
-    }
     }
 ?>
