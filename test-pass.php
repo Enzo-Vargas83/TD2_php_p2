@@ -1,19 +1,19 @@
 <?php
 if (!empty($_POST)) {
-    $login = $_POST['login'];
-    $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2', 'vargas', 'lolo83520');
-    $req = $dbh->query("SELECT * FROM User_test WHERE Login='$login'");
-    $chk_pseudo = $req->fetch(PDO::FETCH_ASSOC);
-    var_dump($chk_pseudo);
-    if($chk_pseudo == '1' || $chk_pseudo > '1')
-    {
-        $error_pseudo_identique = 'Ce pseudo existe déjà !';
-        echo $error_pseudo_identique;
-    }
-    else
-    {
-        $error_pseudo_identique = 'Ce pseudo est disponible!';
-        echo $error_pseudo_identique;
-    }
+    session_start();
+    @$login=$_POST["login"];
+     $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2', 'vargas', 'lolo83520');
+     $sel=$dbh->prepare("select * from utilisateurs where login=? limit 1");
+     $sel->execute(array($login));
+     $tab=$sel->fetchAll();
+     if(count($tab)>0){
+         $_SESSION["prenomNom"]=ucfirst(strtolower($tab[0]["prenom"])).
+                " ".strtoupper($tab[0]["nom"]);
+         $_SESSION["autoriser"]="oui";
+            header("location:session.php");
+        }
+        else {
+            $erreur = "Mauvais login ou mot de passe!";
+        }
 }
 ?>
