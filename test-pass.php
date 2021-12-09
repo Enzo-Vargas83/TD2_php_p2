@@ -5,6 +5,7 @@ if (!empty($_POST)) {
     $stmt = $dbh->prepare("SELECT * FROM User_test WHERE username=?");
     $stmt->execute([$login]);
     $user = $stmt->fetch();
+    var_dump($user);
     if ($user) {
         echo "existe";
     } else {
