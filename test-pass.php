@@ -3,7 +3,7 @@ if (!empty($_POST)) {
     session_start();
     @$login=$_POST["login"];
      $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2', 'vargas', 'lolo83520');
-     $sel=$dbh->prepare("select * from utilisateurs where login=? limit 1");
+     $sel=$dbh->prepare("select * from utilisateurs where Login=? limit");
      $sel->execute(array($login));
      $tab=$sel->fetchAll();
      if(count($tab)>0){
