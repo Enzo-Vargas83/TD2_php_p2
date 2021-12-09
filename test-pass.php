@@ -6,12 +6,5 @@ if (!empty($_POST)) {
     $query = 'INSERT INTO User_test (Login, Password) VALUES (\'' . $login . '\', \''
         . $mdp . '\')';
 
-    if (!($dbResult = mysqli_query($dbLink, $query))) {
-        header('Location : page_erreur.php');
-        exit();
-    }
-    else {
-        header('Location : page_1.php');
-    }
 }
 ?>
