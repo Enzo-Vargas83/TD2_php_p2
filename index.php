@@ -1,7 +1,7 @@
 <form action="test-pass.php" method="post">
     <label>
-        Login :
-        <input type="text" name="login">
+        Login :eazezaezaezae
+        <input type="text" name="login"/>
     </label>
     <label>
         Password :
