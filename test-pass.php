@@ -4,7 +4,7 @@ if (!empty($_POST)) {
     $mdp = $_POST['password'];
     $dbLink = mysqli_connect('mysql-vargas.alwaysdata.net', 'vargas', 'lolo83520', 'vargas_td2');
 
-    $select = mysqli_query($dbLink, "SELECT Login FROM User_test'".$_POST['login']."'");
+    $select = mysqli_query($dbLink, "SELECT Login FROM User_test WHERE Login = ". $_POST['login'] ."");
     if(mysqli_num_rows($select)) {
         header("location : page_erreur.php");
     }
