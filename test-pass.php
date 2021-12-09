@@ -1,32 +1,17 @@
 <?php
 if (!empty($_POST)) {
-    $pseudo=$_POST['login'];
-    try
+    $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2', 'vargas', 'lolo83520');
+    $stmt = $dbh->prepare("SELECT *  FROM User_test WHERE Login = ?");
+    $stmt->execute(array(
+        $_POST['login']));
+
+    $resultat = $stmt->fetch();
+
+    if (!$resultat)
     {
-        $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-        $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2', 'vargas', 'lolo83520');
-
-        $reponse = $dbh->query("SELECT COUNT(pseudo) FROM ident WHERE pseudo=".$pseudo);
-        if($donnees=$reponse->fetch())
-        {
-            if ($donnees['pseudo']==1)
-            {
-                echo 'bienvenue';
-            }
-
-            else
-            {
-                echo 'informations non correctes';
-                header('refresh:2;url=connexion.php');
-            }
+        if (!$resultat['login'] === $username) {
+            array_push($errors, "Ce nom d'utilisateur existe déjà");
         }
-
-    }
-
-
-    catch(Exception $e)
-    {
-        die('Erreur : '.$e->getMessage());
     }
 }
 ?>
