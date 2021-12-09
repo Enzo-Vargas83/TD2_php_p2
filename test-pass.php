@@ -6,7 +6,7 @@ if (!empty($_POST)) {
      $stmt->execute([$login]);
      $stmt->fetch();
      var_dump($stmt);
-     if($stmt != 1) {
+     if(Statement::$stmt == 1) {
         echo "existe";
      }
      else {
