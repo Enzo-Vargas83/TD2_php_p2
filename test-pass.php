@@ -7,7 +7,7 @@ if (!empty($_POST)) {
     $select = mysqli_query($dbLink, "SELECT COUNT(Login) FROM User_test WHERE Login = '" . $_POST['login'] . "'");
     $nombre = mysqli_fetch_array($select);
     if ($nombre[0] == 1){
-        header("Location page_erreur.php");
+        header("Location : page_erreur.php");
     }
     }
 ?>
