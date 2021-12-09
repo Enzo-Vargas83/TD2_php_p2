@@ -11,9 +11,11 @@ if (!empty($_POST)) {
                 " ".strtoupper($tab[0]["nom"]);
          $_SESSION["autoriser"]="oui";
             header("location:session.php");
+         echo "connecter";
         }
         else {
             $erreur = "Mauvais login ou mot de passe!";
+            echo $erreur;
         }
 }
 ?>
