@@ -1,12 +1,11 @@
 <?php
 if (!empty($_POST)) {
-    $login = $_POST['login'];
-    $mdp = $_POST['password'];
-    $dbLink = mysqli_connect('mysql-vargas.alwaysdata.net', 'vargas', 'lolo83520', 'vargas_td2');
+    $dbh = new PDO('mysql:host=mysql-vargas.alwaysdata.net;dbname=vargas_td2','vargas','lolo83520');
+    $stmt = $dbh->prepare("SELECT COUNT(Login) FROM User_test WHERE Login = ?");
+    $stmt->execute([
+        $_POST['login']
+    ]);
 
-    $select = mysqli_query($dbLink, "SELECT COUNT(Login) FROM User_test WHERE Login = '" . $_POST['login'] . "'");
-    var_dump($select);
-    if (mysqli_num_rows($select) == 1)
-        echo oula;
-    }
+    $result = $stmt->fetchAll();
+    var_dump($result);
 ?>
