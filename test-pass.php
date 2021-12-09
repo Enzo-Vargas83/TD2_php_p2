@@ -4,10 +4,10 @@ if (!empty($_POST)) {
     $mdp = $_POST['password'];
     $dbLink = mysqli_connect('mysql-vargas.alwaysdata.net', 'vargas', 'lolo83520', 'vargas_td2');
 
-    $select = mysqli_query($dbLink, "SELECT COUNT(Login) FROM User_test WHERE Login = '" . $_POST['login'] . "'");
-    var_dump($select);
-    $select -> mysqli_field_count();
-    if ($select == 1)
+    $dbLink -> query($dbLink, "SELECT COUNT(Login) FROM User_test WHERE Login = '" . $_POST['login'] . "'");
+    var_dump($dbLink);
+    $dbLink -> mysqli_field_count();
+    if ($dbLink == 1)
         echo oula;
     }
 ?>
