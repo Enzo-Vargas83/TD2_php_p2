@@ -7,6 +7,12 @@ if (!empty($_POST)) {
     if($chk_pseudo == '1' || $chk_pseudo > '1')
     {
         $error_pseudo_identique = 'Ce pseudo existe déjà !';
-    }else{ $error_pseudo_identique = 'Ce pseudo est disponible!';}
+        echo $error_pseudo_identique;
+    }
+    else
+    {
+        $error_pseudo_identique = 'Ce pseudo est disponible!';
+        echo $error_pseudo_identique;
+    }
 }
 ?>
