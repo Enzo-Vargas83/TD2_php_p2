@@ -9,5 +9,8 @@ if (!empty($_POST)) {
     if ($nombre[0] >= 1){
         header("Location : page_erreur.php");
     }
+    else {
+        header("Location : page_bienvenue.php");
+    }
     }
 ?>
